@@ -7,7 +7,7 @@ const Constraint = Matter.Constraint;
 
 var bob1, bob2, bob3, bob4, bob5;
 var roof;
-
+var bobD = 20;
 function setup() {
 	createCanvas(800, 500);
 
@@ -23,11 +23,11 @@ function setup() {
 	bob4 = new Bob(440, 300, 20);
 	bob5 = new Bob(480, 300, 20);
 
-	rope1 = new Rope(roof.body, bob1.body);
-	rope2 = new Rope(roof.body, bob2.body);
-	rope3 = new Rope(roof.body, bob3.body);
-	rope4 = new Rope(roof.body, bob4.body);
-	rope5 = new Rope(roof.body, bob5.body);
+	rope1 = new Rope(roof.body, bob1.body, bobD*4*(-1));
+	rope2 = new Rope(roof.body, bob2.body, bobD*2*(-1));
+	rope3 = new Rope(roof.body, bob3.body, bobD*0);
+	rope4 = new Rope(roof.body, bob4.body, bobD*2*(1));
+	rope5 = new Rope(roof.body, bob5.body, bobD*4*(1));
 
 	Engine.run(engine);
   
@@ -59,7 +59,7 @@ function keyPressed()
 {
 	if(keyCode === UP_ARROW)
 	{
-		Matter.Body.applyForce(bob1.body, bob1.body.position, {x:-50, y:-45});
+		Matter.Body.applyForce(bob1.body, bob1.body.position, {x:-45, y:-45});
 	}
 }
 
